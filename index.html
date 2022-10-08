@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valid troll team</title>
+    
+    <style>
+        body {
+            font-size: 50px;
+            padding: 3em;
+            background-color: darkgray;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div style="background: white; padding: 2em; width: 10em;">
+        <p>Làm bạn gái anh nhé ???</p>
+        <input type="password" style="height: 2em; width: 8em; 
+        border: 5px dimgray solid;
+        border-radius: .3em;
+        padding-left: .3em;
+         font-size: 1.2em;" id="userPassword">
+
+        <button onclick="traloi()">Hiện câu trả lời</button>
+        <br>
+        <input type="submit" id="submitBtn" value="Không" style="height: 5em; 
+        width: 10em; 
+        margin-top: 5em; 
+        margin-left: 13em;
+        transition: 0.25s ease;
+        ">
+        <br>
+        <input type="submit" id="NosubmitBtn" value="Có! Đồng ý 💍💍💍" onclick="NoAllow()" style="height: 5em; 
+                width: 10em; 
+                margin-top: 5em; 
+                margin-left: 13em;
+                transition: 0.25s ease;
+                
+                ">
+    </div>
+
+
+
+    <script>
+        let validFlag = false;
+
+
+        //=====================================//
+        let userPassword = document.getElementById("userPassword");
+
+        function borderRed() {
+            userPassword.style.borderColor = "darksalmon";
+            userPassword.style.outline = "solid darksalmon";
+        }
+
+        function borderGreen() {
+            userPassword.style.borderColor = "palegreen";
+            userPassword.style.outline = "solid palegreen";
+
+        }
+
+        function changeColorAndValidFlag() {
+            if (userPassword.value.length < 8) {
+                borderRed();
+                validFlag = false;
+            } else {
+                borderGreen();
+                validFlag = true;
+            }
+        }
+
+        function resetBorderColor() {
+            userPassword.style.borderColor = "dimgray";
+            userPassword.style.outline = "dimgray";
+        }
+
+
+        userPassword.oninput = () => {
+            if (userPassword.value.length > 0) {
+                changeColorAndValidFlag();
+            } else {
+                resetBorderColor();
+            }
+        }
+
+
+        //=============================================//
+        let submitBtn = document.getElementById("submitBtn");
+        let submitBtnFlag = false;
+
+
+
+        function submitBtnMove() {
+            submitBtnFlag = !submitBtnFlag;
+            if (submitBtnFlag) {
+                let Isem = Math.round(Math.random() * 50);
+                if (Isem < 20) {
+                    var aa = Isem + 20;
+                }
+                else {
+                    submitBtn.style.marginLeft = Isem + "em";
+                }
+                submitBtn.style.marginLeft = aa + "em";
+            } else {
+                submitBtn.style.marginLeft = "2em";
+            }
+        }
+
+        submitBtn.onmouseover = () => {
+            if (validFlag === false) {
+                submitBtnMove();
+            }
+        }
+
+        function Allow() {
+            alert("Vâng!! Không thể từ chối 💘💘💘");
+        }
+        function NoAllow() {
+            alert("Chúc mừng em đã thành người yêu anh  💘💘💘");
+        }
+        function traloi() {
+            if (document.getElementById("userPassword").value === "") {
+                alert("Xin nhập câu trả lời !!");
+            }
+            else {
+                document.getElementById("userPassword").value = "Dạ!!! EM ĐỒNG Ý 💘💘💘💘💘💘";
+                document.getElementById("userPassword").type = "text";
+            }
+
+        }
+    </script>
+</body>
+
+</html>
